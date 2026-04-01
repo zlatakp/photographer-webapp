@@ -49,7 +49,7 @@ export default function Navbar() {
         
         <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           {navLinks.map((link) => {
-            const isActive = pathname === link.path;
+            const isActive = mounted && pathname === link.path;
             return (
               <Link
                 key={link.name}

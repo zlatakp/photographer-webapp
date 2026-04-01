@@ -72,7 +72,7 @@ export default function Booking() {
 
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <h1 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem' }}>
-            Book Your <br /><span style={{ color: 'var(--accent)' }}>Session</span>
+            Book Your <span style={{ color: 'var(--accent)' }}>Session</span>
           </h1>
           <p className="text-muted" style={{ fontSize: '1.1rem' }}>
             Let's design your perfect visual narrative together.

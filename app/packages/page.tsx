@@ -60,7 +60,7 @@ export default function Packages() {
     <div className="container" style={{ paddingTop: '6rem', paddingBottom: '8rem', minHeight: '100vh' }}>
       <div style={{ textAlign: 'center', marginBottom: '4rem' }} className="animate-fade-in">
         <h1 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem' }}>
-          Investment <span style={{ color: 'var(--accent)' }}>Options</span>
+          Package <span style={{ color: 'var(--accent)' }}>Options</span>
         </h1>
         <p className="text-muted" style={{ maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem' }}>
           Select the level of artistry and service that suits your vision. Each package is meticulously tailored to deliver an unforgettable experience.
@@ -71,9 +71,9 @@ export default function Packages() {
 
       <div style={{ marginTop: '8rem' }} className="animate-fade-in stagger-2">
         <h2 style={{ fontSize: '2.5rem', fontWeight: 600, textAlign: 'center', marginBottom: '3rem' }}>Optional <span style={{ color: 'var(--accent)' }}>Add-ons</span></h2>
-        
+
         <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
-          
+
           <div className="glass-panel" style={{ padding: '2rem' }}>
             <h3 style={{ fontSize: '1.5rem', color: 'var(--accent)', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>Additional Photo Services</h3>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
