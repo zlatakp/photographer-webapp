@@ -1,9 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Booking() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const pkg = params.get('package');
+    if (pkg) {
+      const select = document.getElementById('package') as HTMLSelectElement;
+      if (select) select.value = pkg;
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,6 +23,7 @@ export default function Booking() {
         name: (document.getElementById('name') as HTMLInputElement)?.value,
         email: (document.getElementById('email') as HTMLInputElement)?.value,
         type: (document.getElementById('type') as HTMLSelectElement)?.value,
+        packageId: (document.getElementById('package') as HTMLSelectElement)?.value,
         message: (document.getElementById('message') as HTMLTextAreaElement)?.value,
       };
 
@@ -66,6 +76,17 @@ export default function Booking() {
                 <option value="portrait">Luxury Portrait</option>
                 <option value="wedding">Wedding / Elopement</option>
                 <option value="commercial">Commercial / Fashion</option>
+              </select>
+            </div>
+
+            <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
+              <label htmlFor="package" style={{ fontWeight: 500, fontSize: '0.9rem' }}>Desired Package</label>
+              <select id="package" defaultValue="" style={{ padding: '1rem', borderRadius: '4px', border: '1px solid var(--border-color)', background: '#111', color: 'var(--text-main)', outline: 'none' }}>
+                <option value="" disabled>Select a package (Optional)</option>
+                <option value="express">Express (30 min)</option>
+                <option value="standard">Standard (1 hr)</option>
+                <option value="premium">Premium (2 hr)</option>
+                <option value="platinum">Platinum (2 hr + Extras)</option>
               </select>
             </div>
 
