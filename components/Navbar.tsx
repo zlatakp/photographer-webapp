@@ -8,8 +8,10 @@ import { useEffect, useState } from 'react';
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -31,10 +33,10 @@ export default function Navbar() {
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        backgroundColor: scrolled ? 'var(--header-bg)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid var(--border-color)' : '1px solid transparent',
+        backgroundColor: mounted && scrolled ? 'var(--header-bg)' : 'transparent',
+        backdropFilter: mounted && scrolled ? 'blur(16px)' : 'none',
+        WebkitBackdropFilter: mounted && scrolled ? 'blur(16px)' : 'none',
+        borderBottom: mounted && scrolled ? '1px solid var(--border-color)' : '1px solid transparent',
         transition: 'all 0.4s ease',
         padding: '1rem 0',
       }}

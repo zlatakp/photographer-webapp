@@ -33,10 +33,10 @@ export default async function AdminLayout({
             <Link href="/admin" className="admin-nav-link" style={navStyle}>
               <LayoutDashboard size={20} /> Dashboard
             </Link>
-            <Link href="/admin" className="admin-nav-link" style={navStyle}>
+            <Link href="/admin/bookings" className="admin-nav-link" style={navStyle}>
               <BookOpen size={20} /> Bookings
             </Link>
-            <Link href="/admin" className="admin-nav-link" style={navStyle}>
+            <Link href="/admin#theme" className="admin-nav-link" style={navStyle}>
               <Settings size={20} /> Theme Settings
             </Link>
           </nav>
