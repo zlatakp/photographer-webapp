@@ -12,7 +12,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorize: async (credentials) => {
         // Hardcoded admin checking for demo purposes
         if (credentials.email === "admin@auralens.com" && credentials.password === "password") {
-          return { id: "1", name: "AuraLens Admin", email: "admin@auralens.com" }
+          return { id: "1", name: "Zlata JPEG Admin", email: "admin@auralens.com" }
         }
         return null
       },

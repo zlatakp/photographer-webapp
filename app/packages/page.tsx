@@ -3,22 +3,12 @@ import Link from 'next/link';
 import PackageCarousel from '@/components/PackageCarousel';
 
 export const metadata: Metadata = {
-  title: 'Packages | AuraLens',
+  title: 'Packages | Zlata JPEG',
   description: 'Explore our tiered photography service packages tailored to capture your luxury moments.',
 };
 
 export default function Packages() {
   const packages = [
-    {
-      title: 'Express',
-      price: '£250',
-      description: 'A quick and elegant session perfect for headshots or a brief portrait highlight.',
-      features: [
-        '30-minute session',
-        '3 high-end retouched images',
-        'Online private gallery',
-      ],
-    },
     {
       title: 'Standard',
       price: '£500',
@@ -54,12 +44,32 @@ export default function Packages() {
         'Professional Hair Stylist',
       ],
     },
+    {
+      title: 'Express',
+      price: '£250',
+      description: 'A quick and elegant session perfect for headshots or a brief portrait highlight.',
+      features: [
+        '30-minute session',
+        '3 high-end retouched images',
+        'Online private gallery',
+      ],
+    },
   ];
 
   return (
     <div className="container" style={{ paddingTop: '6rem', paddingBottom: '8rem', minHeight: '100vh' }}>
       <div style={{ textAlign: 'center', marginBottom: '4rem' }} className="animate-fade-in">
-        <h1 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem' }}>
+        <h1 style={{
+          //fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem',
+          fontSize: 'clamp(3rem, 8vw, 4rem)',
+          fontWeight: 700,
+          lineHeight: 1.1,
+          letterSpacing: '-0.02em',
+          marginBottom: '1rem',
+          background: 'linear-gradient(to right, var(--text-main), var(--accent))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent'
+        }}>
           Package <span style={{ color: 'var(--accent)' }}>Options</span>
         </h1>
         <p className="text-muted" style={{ maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem' }}>

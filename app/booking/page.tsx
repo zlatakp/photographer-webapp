@@ -71,7 +71,18 @@ export default function Booking() {
       <div style={{ maxWidth: '750px', width: '100%' }} className="animate-fade-in">
 
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <h1 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem' }}>
+          <h1 style={{
+
+            // fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem' 
+            fontSize: 'clamp(3rem, 8vw, 4rem)',
+            fontWeight: 700,
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
+            marginBottom: '1rem',
+            background: 'linear-gradient(to right, var(--text-main), var(--accent))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>
             Book Your <span style={{ color: 'var(--accent)' }}>Session</span>
           </h1>
           <p className="text-muted" style={{ fontSize: '1.1rem' }}>

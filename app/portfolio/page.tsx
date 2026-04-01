@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Portfolio | AuraLens',
+  title: 'Portfolio | Zlata JPEG',
   description: 'View our exclusive gallery of luxury portraiture and event photography.',
 };
 
@@ -18,16 +18,16 @@ export default function Portfolio() {
         </p>
       </div>
 
-      <div className="grid animate-fade-in stagger-1" style={{ 
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
-        gap: '1.5rem' 
+      <div className="grid animate-fade-in stagger-1" style={{
+        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+        gap: '1.5rem'
       }}>
         {/* Placeholder images - will be dynamic later */}
         {[1, 2, 3, 4, 5, 6].map((img) => (
-          <div key={img} className="glass-panel" style={{ 
-            aspectRatio: '3/4', 
-            position: 'relative', 
-            overflow: 'hidden', 
+          <div key={img} className="glass-panel" style={{
+            aspectRatio: '3/4',
+            position: 'relative',
+            overflow: 'hidden',
             borderRadius: 'var(--radius)',
             cursor: 'zoom-in'
           }}>
@@ -45,7 +45,7 @@ export default function Portfolio() {
           </div>
         ))}
       </div>
-      
+
       <div style={{ textAlign: 'center', marginTop: '5rem' }}>
         <Link href="/booking" className="btn-primary">
           Interested in your own shoot?

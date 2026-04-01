@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'dark' | 'light' | 'minimalist';
+type Theme = 'dark' | 'light' | 'minimalist' | 'emerald' | 'midnight' | 'charcoal' | 'champagne' | 'silver' | 'rolex' | 'cartier' | 'plum';
 
 interface ThemeContextType {
   theme: Theme;

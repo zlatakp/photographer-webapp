@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About | AuraLens',
-  description: 'Learn more about the artistic visionary behind AuraLens photography.',
+  title: 'About | ZLATA JPEG',
+  description: 'Learn more about the artistic visionary behind Zlata JPEG photography.',
 };
 
 export default function About() {
   return (
     <div className="container" style={{ paddingTop: '6rem', paddingBottom: '6rem' }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem', alignItems: 'center', maxWidth: '800px', margin: '0 auto' }}>
-        
+
         <div style={{ textAlign: 'center' }} className="animate-fade-in">
           <h1 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem' }}>
             Meet the <span style={{ color: 'var(--accent)' }}>Artist</span>
@@ -22,7 +22,7 @@ export default function About() {
 
         <div className="animate-fade-in stagger-2" style={{ fontSize: '1.2rem', lineHeight: 1.8, color: 'var(--text-main)' }}>
           <p style={{ marginBottom: '1.5rem' }}>
-            Founded in Paris and now serving exclusive clientele globally, AuraLens is the culmination of over a decade of pursuit of visual perfection.
+            Founded in Paris and now serving exclusive clientele globally, Zlata JPEG is the culmination of over a decade of pursuit of visual perfection.
           </p>
           <p style={{ marginBottom: '1.5rem' }}>
             I believe that photography is more than just capturing light; it is about encapsulating the sheer emotion, the profound unspoken stories, and the pure elegance of my subjects. Using a blend of classical composition and modern cinematic lighting, my work transforms fleeting moments into timeless works of art.

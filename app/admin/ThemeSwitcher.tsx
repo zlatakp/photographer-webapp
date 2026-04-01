@@ -12,10 +12,13 @@ export default function ThemeSwitcher() {
         <Palette size={18} /> Select Active Theme
       </label>
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-        {['dark', 'light', 'minimalist'].map((t) => (
+        {[
+          'dark', 'light', 'minimalist', 'emerald', 'midnight', 'charcoal', 'champagne',
+          'silver', 'rolex', 'cartier', 'plum'
+        ].map((t) => (
           <button
             key={t}
-            onClick={() => setTheme(t as 'dark' | 'light' | 'minimalist')}
+            onClick={() => setTheme(t as any)}
             className={theme === t ? 'btn-primary' : 'btn-secondary'}
             style={{ textTransform: 'capitalize', flex: 1, minWidth: '100px' }}
           >

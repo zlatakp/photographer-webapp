@@ -15,7 +15,7 @@ export default async function AdminLayout({
   // For anything else inside /admin/* we demand auth.
   // Wait, layout runs for all /admin. To avoid redirect loop on /admin/login, we check pathname.
   // We can't check pathname in Server Components easily. We should handle it at the page level or use middleware.
-  
+
   return (
     <div style={{ display: 'flex', minHeight: '100vh', width: '100vw' }}>
       {session && (
@@ -28,7 +28,7 @@ export default async function AdminLayout({
           flexDirection: 'column',
           gap: '2rem'
         }}>
-          <h2 style={{ paddingLeft: '1rem', fontSize: '1.25rem', letterSpacing: '0.1em' }}>AURALENS <span style={{color:'var(--accent)'}}>ADMIN</span></h2>
+          <h2 style={{ paddingLeft: '1rem', fontSize: '1.25rem', letterSpacing: '0.1em' }}>ZLATA JPEG <span style={{ color: 'var(--accent)' }}>ADMIN</span></h2>
           <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
             <Link href="/admin" className="admin-nav-link" style={navStyle}>
               <LayoutDashboard size={20} /> Dashboard

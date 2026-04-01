@@ -89,7 +89,7 @@ export default async function AdminDashboard() {
         <div className="glass-panel" style={{ padding: '2rem' }}>
           <h2 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '1rem' }}>Theme Settings</h2>
           <p className="text-muted" style={{ fontSize: '0.9rem', marginBottom: '2rem' }}>
-            Customize the public interface of AuraLens. Changes apply instantly across all pages.
+            Customize the public interface of ZLATA JPEG. Changes apply instantly across all pages.
           </p>
           <ThemeSwitcher />
         </div>

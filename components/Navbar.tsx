@@ -29,17 +29,7 @@ export default function Navbar() {
 
   return (
     <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        backgroundColor: mounted && scrolled ? 'var(--header-bg)' : 'transparent',
-        backdropFilter: mounted && scrolled ? 'blur(16px)' : 'none',
-        WebkitBackdropFilter: mounted && scrolled ? 'blur(16px)' : 'none',
-        borderBottom: mounted && scrolled ? '1px solid var(--border-color)' : '1px solid transparent',
-        transition: 'all 0.4s ease',
-        padding: '1rem 0',
-      }}
+      className={`navbar-header ${mounted && scrolled ? 'navbar-scrolled' : ''}`}
     >
       <div className="container flex items-center justify-between">
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.25rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
