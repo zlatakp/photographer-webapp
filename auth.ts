@@ -6,13 +6,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Credentials({
       name: "Admin Login",
       credentials: {
-        email: { label: "Email", type: "email", placeholder: "admin@auralens.com" },
+        email: { label: "Email", type: "email", placeholder: "admin@zlatajpeg.com" },
         password: { label: "Password", type: "password", placeholder: "password" },
       },
       authorize: async (credentials) => {
         // Hardcoded admin checking for demo purposes
-        if (credentials.email === "admin@auralens.com" && credentials.password === "password") {
-          return { id: "1", name: "Zlata JPEG Admin", email: "admin@auralens.com" }
+        if (credentials.email === "admin@zlatajpeg.com" && credentials.password === "password") {
+          return { id: "1", name: "Zlata JPEG Admin", email: "admin@zlatajpeg.com" }
         }
         return null
       },

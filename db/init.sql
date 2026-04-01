@@ -1,4 +1,4 @@
--- AuraLens Bookings Schema
+-- Zlata JPEG Bookings Schema
 -- This runs automatically on first `docker compose up`
 
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";

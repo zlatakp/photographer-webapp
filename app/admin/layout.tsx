@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { LayoutDashboard, Settings, BookOpen, LogOut } from 'lucide-react';
+import { LayoutDashboard, Settings, BookOpen, LogOut, Package, ListPlus } from 'lucide-react';
 import React from 'react';
 
 export default async function AdminLayout({
@@ -10,11 +10,6 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }) {
   const session = await auth();
-
-  // If we are at the login page, let it through
-  // For anything else inside /admin/* we demand auth.
-  // Wait, layout runs for all /admin. To avoid redirect loop on /admin/login, we check pathname.
-  // We can't check pathname in Server Components easily. We should handle it at the page level or use middleware.
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', width: '100vw' }}>
@@ -35,6 +30,12 @@ export default async function AdminLayout({
             </Link>
             <Link href="/admin/bookings" className="admin-nav-link" style={navStyle}>
               <BookOpen size={20} /> Bookings
+            </Link>
+            <Link href="/admin/packages" className="admin-nav-link" style={navStyle}>
+              <Package size={20} /> Packages
+            </Link>
+            <Link href="/admin/addons" className="admin-nav-link" style={navStyle}>
+              <ListPlus size={20} /> Add-ons
             </Link>
             <Link href="/admin#theme" className="admin-nav-link" style={navStyle}>
               <Settings size={20} /> Theme Settings
