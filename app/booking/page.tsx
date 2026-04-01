@@ -4,6 +4,11 @@ import { useState, useEffect } from 'react';
 
 export default function Booking() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [extras, setExtras] = useState<string[]>([]);
+
+  const handleExtraToggle = (extra: string) => {
+    setExtras(prev => prev.includes(extra) ? prev.filter(e => e !== extra) : [...prev, extra]);
+  };
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -25,6 +30,7 @@ export default function Booking() {
         type: (document.getElementById('type') as HTMLSelectElement)?.value,
         packageId: (document.getElementById('package') as HTMLSelectElement)?.value,
         message: (document.getElementById('message') as HTMLTextAreaElement)?.value,
+        extras,
       };
 
       await fetch('/api/bookings', {
@@ -88,6 +94,34 @@ export default function Booking() {
                 <option value="premium">Premium (2 hr)</option>
                 <option value="platinum">Platinum (2 hr + Extras)</option>
               </select>
+            </div>
+
+            <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
+              <label style={{ fontWeight: 500, fontSize: '0.9rem' }}>Optional Add-ons (Select all that apply)</label>
+              <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', background: 'rgba(0,0,0,0.2)', padding: '1.5rem', borderRadius: '4px', border: '1px solid var(--border-color)' }}>
+                {[
+                  { id: 'photo-rush', label: 'Rush Delivery (£150)' },
+                  { id: 'photo-all', label: 'All Unedited Images (£220)' },
+                  { id: 'photo-add-edit', label: 'Additional Edited Images' },
+                  { id: 'photo-color', label: 'Colour Correction Images' },
+                  { id: 'photo-custom', label: 'Custom Retouching' },
+                  { id: 'photo-third', label: 'Third-Party Retouching' },
+                  { id: 'photo-resize', label: 'Cropping/Resizing (£30)' },
+                  { id: 'vid-teaser', label: 'Video Teaser (£50)' },
+                  { id: 'vid-edit', label: 'Video Edit (£75)' },
+                  { id: 'vid-extended', label: 'Video Extended (£150)' },
+                ].map(addon => (
+                  <label key={addon.id} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', cursor: 'pointer' }}>
+                    <input 
+                      type="checkbox" 
+                      checked={extras.includes(addon.id)}
+                      onChange={() => handleExtraToggle(addon.id)}
+                      style={{ accentColor: 'var(--accent)', width: '1.25rem', height: '1.25rem' }}
+                    />
+                    {addon.label}
+                  </label>
+                ))}
+              </div>
             </div>
 
             <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>

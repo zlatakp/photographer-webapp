@@ -10,7 +10,7 @@ export default function Packages() {
   const packages = [
     {
       title: 'Express',
-      price: '$250',
+      price: '£250',
       description: 'A quick and elegant session perfect for headshots or a brief portrait highlight.',
       features: [
         '30-minute session',
@@ -20,7 +20,7 @@ export default function Packages() {
     },
     {
       title: 'Standard',
-      price: '$500',
+      price: '£500',
       description: 'Our most popular session offering comprehensive classic portraiture.',
       features: [
         '1-hour session',
@@ -31,7 +31,7 @@ export default function Packages() {
     },
     {
       title: 'Premium',
-      price: '$950',
+      price: '£950',
       description: 'An extended experience allowing for multiple looks and complete access.',
       features: [
         '2-hour session',
@@ -42,7 +42,7 @@ export default function Packages() {
     },
     {
       title: 'Platinum',
-      price: '$1,800',
+      price: '£1,800',
       description: 'The ultimate luxury experience providing a full suite of elevated services.',
       features: [
         '2-hour premium session',
@@ -119,6 +119,40 @@ export default function Packages() {
             </Link>
           </div>
         ))}
+      </div>
+
+      <div style={{ marginTop: '8rem' }} className="animate-fade-in stagger-2">
+        <h2 style={{ fontSize: '2.5rem', fontWeight: 600, textAlign: 'center', marginBottom: '3rem' }}>Optional <span style={{ color: 'var(--accent)' }}>Add-ons</span></h2>
+        
+        <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
+          
+          <div className="glass-panel" style={{ padding: '2rem' }}>
+            <h3 style={{ fontSize: '1.5rem', color: 'var(--accent)', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>Additional Photo Services</h3>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+              <li style={{ display: 'flex', justifyContent: 'space-between' }}><span>Rush Delivery (3 days)</span> <strong>£150</strong></li>
+              <li style={{ display: 'flex', justifyContent: 'space-between' }}><span>Access to All Unedited Images</span> <strong>£220</strong></li>
+              <li style={{ display: 'flex', justifyContent: 'space-between' }}><span>Additional Edited Images</span> <strong>£40 / img</strong></li>
+              <li style={{ display: 'flex', justifyContent: 'space-between' }}><span>Colour Correction Only</span> <strong>£20 / img</strong></li>
+              <li style={{ display: 'flex', justifyContent: 'space-between' }}><span>Custom Retouch Add-on</span> <strong>£15 / img</strong></li>
+              <li style={{ display: 'flex', justifyContent: 'space-between' }}><span>Retouching Third-Party Images</span> <strong>£35 / img</strong></li>
+              <li style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+                <span>Cropping/Resizing Specific Formats</span> <strong>£30 flat</strong>
+                <p className="text-muted" style={{ fontSize: '0.85rem', width: '100%', marginTop: '0.5rem' }}>Includes: Instagram posts, stories, web, LinkedIn, or print. Includes background extensions for framing.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div className="glass-panel" style={{ padding: '2rem' }}>
+            <h3 style={{ fontSize: '1.5rem', color: 'var(--accent)', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>Video Services</h3>
+            <p className="text-muted" style={{ fontSize: '0.9rem', marginBottom: '1.5rem' }}>Short-form vertical video captured intentionally during the session (stylized movement, close-ups, and detail shots). Includes light editing and music sync.</p>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+              <li style={{ display: 'flex', justifyContent: 'space-between' }}><span>Teaser (5–10 seconds)</span> <strong>£50</strong></li>
+              <li style={{ display: 'flex', justifyContent: 'space-between' }}><span>Edit (15 seconds)</span> <strong>£75</strong></li>
+              <li style={{ display: 'flex', justifyContent: 'space-between' }}><span>Extended (30 seconds)</span> <strong>£150</strong></li>
+            </ul>
+          </div>
+
+        </div>
       </div>
     </div>
   );
