@@ -1,66 +1,83 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'AuraLens | Luxury Photography',
+  description: 'Experience timeless elegance. We specialize in capturing the essence of luxury through our lens.',
+};
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      {/* Hero Section */}
+      <section style={{ 
+        position: 'relative', 
+        height: '90vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        overflow: 'hidden'
+      }}>
+        {/* Abstract luxury background */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, var(--bg-color) 70%)',
+          zIndex: -1
+        }} />
+        
+        <div className="container" style={{ textAlign: 'center', zIndex: 10 }}>
+          <div className="animate-fade-in">
+            <h1 style={{ 
+              fontSize: 'clamp(3rem, 8vw, 6rem)', 
+              fontWeight: 700, 
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              marginBottom: '1.5rem',
+              background: 'linear-gradient(to right, var(--text-main), var(--accent))',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>
+              Timeless <br /> Elegance
+            </h1>
+          </div>
+          <p className="text-muted animate-fade-in stagger-1" style={{ 
+            fontSize: '1.25rem', 
+            maxWidth: '600px', 
+            margin: '0 auto 3rem auto',
+            fontWeight: 300
+          }}>
+            We capture the finest moments with unparalleled artistry. Exquisite luxury photography for those who demand perfection.
           </p>
+          <div className="flex justify-center gap-4 animate-fade-in stagger-2">
+            <Link href="/portfolio" className="btn-primary">
+              Discover Portfolio
+            </Link>
+            <Link href="/booking" className="btn-secondary">
+              Book a Session
+            </Link>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Philosophy Section */}
+      <section className="container" style={{ padding: '6rem 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: 600, marginBottom: '2rem', textAlign: 'center' }}>
+          Our <span style={{ color: 'var(--accent)' }}>Philosophy</span>
+        </h2>
+        <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', width: '100%' }}>
+          {[
+            { title: 'Artistry', desc: 'Every frame is hand-crafted to represent your true self in the most beautiful light.' },
+            { title: 'Exclusivity', desc: 'We take only a limited number of clients per year to ensure unparalleled quality.' },
+            { title: 'Legacy', desc: 'Your photographs are not just images; they are heirlooms for future generations.' }
+          ].map((item, i) => (
+            <div key={i} className="glass-panel hover-lift" style={{ padding: '3rem 2rem', textAlign: 'center', transition: 'transform 0.4s ease' }}>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--accent)' }}>{item.title}</h3>
+              <p className="text-muted">{item.desc}</p>
+            </div>
+          ))}
         </div>
-      </main>
+      </section>
     </div>
   );
 }
