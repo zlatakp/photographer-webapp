@@ -1,29 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronRight, ChevronLeft, Check, Sparkles, User, Mail, Camera, Calendar, FileText } from 'lucide-react';
-
-interface Package {
-  id: string;
-  slug: string;
-  name: string;
-  price: string;
-}
-
-interface Addon {
-  id: string;
-  slug: string;
-  name: string;
-  price: string;
-}
+import { ChevronRight, ChevronLeft, Check, Sparkles, User, Mail, Camera, FileText } from 'lucide-react';
+import { PACKAGE_TIERS, ADDONS } from '@/config/packages.config';
 
 export default function Booking() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
-
-  const [dbPackages, setDbPackages] = useState<Package[]>([]);
-  const [dbAddons, setDbAddons] = useState<Addon[]>([]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -35,32 +19,16 @@ export default function Booking() {
   const [extras, setExtras] = useState<string[]>([]);
 
   useEffect(() => {
-    // Fetch dynamic options from the public API
-    const fetchServices = async () => {
-      try {
-        const res = await fetch('/api/services');
-        const data = await res.json();
-        if (data.success) {
-          setDbPackages(data.packages);
-          setDbAddons(data.addons);
-
-          // Handle package from URL
-          const params = new URLSearchParams(window.location.search);
-          const pkgSlug = params.get('package');
-          if (pkgSlug) {
-            const foundPkg = data.packages.find((p: Package) => p.slug === pkgSlug);
-            if (foundPkg) {
-              setFormData(prev => ({ ...prev, packageId: foundPkg.slug }));
-              setStep(2);
-            }
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching services:', error);
+    // Handle package from URL
+    const params = new URLSearchParams(window.location.search);
+    const pkgSlug = params.get('package');
+    if (pkgSlug) {
+      const foundPkg = PACKAGE_TIERS.find(p => p.slug === pkgSlug);
+      if (foundPkg) {
+        setFormData(prev => ({ ...prev, packageId: foundPkg.slug }));
+        setStep(2);
       }
-    };
-
-    fetchServices();
+    }
   }, []);
 
   const handleExtraToggle = (extraSlug: string) => {
@@ -103,8 +71,8 @@ export default function Booking() {
     }
   };
 
-  const selectedPkg = dbPackages.find(p => p.slug === formData.packageId);
-  const selectedAddons = dbAddons.filter(a => extras.includes(a.slug));
+  const selectedPkg = PACKAGE_TIERS.find(p => p.slug === formData.packageId);
+  const selectedAddons = ADDONS.filter(a => extras.includes(a.slug));
 
   return (
     <div className="container" style={{ paddingTop: '6rem', paddingBottom: '6rem', minHeight: '100vh', display: 'flex', justifyContent: 'center' }}>
@@ -185,7 +153,7 @@ export default function Booking() {
                       <label htmlFor="package" style={{ fontWeight: 500, fontSize: '0.9rem' }}>Desired Package</label>
                       <select id="package" value={formData.packageId} onChange={e => setFormData({ ...formData, packageId: e.target.value })} style={inputStyle}>
                         <option value="" disabled>Select a package (Optional)</option>
-                        {dbPackages.map(pkg => (
+                        {PACKAGE_TIERS.map(pkg => (
                           <option key={pkg.id} value={pkg.slug}>{pkg.name} ({pkg.price})</option>
                         ))}
                       </select>
@@ -200,7 +168,7 @@ export default function Booking() {
                         Elevate Your Experience with Add-ons <Sparkles size={16} color="var(--accent)" />
                       </label>
                       <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '1rem', paddingTop: '1rem' }}>
-                        {dbAddons.map(addon => (
+                        {ADDONS.map(addon => (
                           <label key={addon.id} style={{
                             display: 'flex',
                             alignItems: 'center',

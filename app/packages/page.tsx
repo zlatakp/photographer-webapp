@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import db from '@/lib/db';
 import PackageCarousel from '@/components/PackageCarousel';
+import { PACKAGE_TIERS, SERVICES, ADDONS } from '@/config/packages.config';
 
 export const metadata: Metadata = {
   title: 'Packages | Zlata JPEG',
@@ -8,46 +8,26 @@ export const metadata: Metadata = {
 };
 
 export default async function Packages() {
-  // Fetch packages from DB
-  const packageRes = await db.query(
-    'SELECT * FROM service_packages ORDER BY order_index ASC'
-  );
-  const packages = packageRes.rows.map(pkg => {
-    // Reconstruct readable features from structured fields
-    const features = [];
+  // Map configuration data to the carousel format
+  const packages = PACKAGE_TIERS.map(tier => {
+    // Dynamically build features list based on the SERVICES schema
+    const features: string[] = [];
     
-    // Duration
-    if (pkg.duration_min >= 60) {
-      const hours = pkg.duration_min / 60;
-      features.push(`${hours === 1 ? '1-hour' : `${hours}-hour`} session`);
-    } else {
-      features.push(`${pkg.duration_min}-minute session`);
-    }
-
-    // Photos
-    features.push(`${pkg.photos_count} high-end retouched images`);
-
-    // Booleans
-    if (pkg.has_online_gallery) features.push('Online private gallery');
-    if (pkg.has_unedited) features.push('Access to all unedited photos');
-    if (pkg.has_mua) features.push('Professional MUA (Make-up Artist)');
-    if (pkg.has_hair) features.push('Professional Hair Stylist');
-    if (pkg.has_studio) features.push('Studio rental cost included');
-    if (pkg.has_cloud_storage) features.push('Includes cloud storage');
+    SERVICES.forEach(service => {
+      const value = tier.services[service.id];
+      if (value !== undefined && value !== false) {
+        features.push(service.render(value));
+      }
+    });
 
     return {
-      ...pkg,
-      title: pkg.name,
-      popular: pkg.is_popular,
+      title: tier.name,
+      price: tier.price,
+      description: tier.description,
+      popular: tier.isPopular,
       features
     };
   });
-
-  // Fetch addons from DB
-  const addonRes = await db.query(
-    'SELECT * FROM service_addons ORDER BY order_index ASC'
-  );
-  const addons = addonRes.rows;
 
   return (
     <div className="container" style={{ paddingTop: '6rem', paddingBottom: '8rem', minHeight: '100vh' }}>
@@ -79,7 +59,7 @@ export default async function Packages() {
           <div className="glass-panel" style={{ padding: '2rem' }}>
             <h3 style={{ fontSize: '1.5rem', color: 'var(--accent)', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>Additional Photo Services</h3>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-              {addons.filter(a => a.category === 'photo').map((addon) => (
+              {ADDONS.filter(a => a.category === 'photo').map((addon) => (
                 <li key={addon.id} style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
                   <div style={{ flex: 1 }}>
                     <span>{addon.name}</span>
@@ -94,7 +74,7 @@ export default async function Packages() {
           <div className="glass-panel" style={{ padding: '2rem' }}>
             <h3 style={{ fontSize: '1.5rem', color: 'var(--accent)', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>Video Services</h3>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-              {addons.filter(a => a.category === 'video').map((addon) => (
+              {ADDONS.filter(a => a.category === 'video').map((addon) => (
                 <li key={addon.id} style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
                   <div style={{ flex: 1 }}>
                     <span>{addon.name}</span>
