@@ -11,7 +11,16 @@ export default function About() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem', alignItems: 'center', maxWidth: '800px', margin: '0 auto' }}>
 
         <div style={{ textAlign: 'center' }} className="animate-fade-in">
-          <h1 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem' }}>
+          <h1 style={{
+            fontSize: 'clamp(3rem, 8vw, 4rem)',
+            fontWeight: 700,
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
+            marginBottom: '1rem',
+            background: 'linear-gradient(to right, var(--text-main), var(--accent))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>
             Meet the <span style={{ color: 'var(--accent)' }}>Artist</span>
           </h1>
         </div>

@@ -33,7 +33,18 @@ export default function AdminAddonsPage() {
     <div className="animate-fade-in">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <div>
-          <h1 style={{ fontSize: '2rem', fontWeight: 700 }}>Service <span style={{ color: 'var(--accent)' }}>Add-ons</span></h1>
+          <h1 style={{
+            fontSize: 'clamp(2.5rem, 6vw, 3.5rem)',
+            fontWeight: 700,
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
+            marginBottom: '0.5rem',
+            background: 'linear-gradient(to right, var(--text-main), var(--accent))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>
+            Service <span style={{ color: 'var(--accent)' }}>Add-ons</span>
+          </h1>
           <p className="text-muted">Configuration-driven add-on management. Managed via central config.</p>
         </div>
         <button 

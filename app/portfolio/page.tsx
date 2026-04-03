@@ -10,7 +10,16 @@ export default function Portfolio() {
   return (
     <div className="container" style={{ paddingTop: '6rem', paddingBottom: '6rem', minHeight: '100vh' }}>
       <div style={{ textAlign: 'center', marginBottom: '4rem' }} className="animate-fade-in">
-        <h1 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem' }}>
+        <h1 style={{
+          fontSize: 'clamp(3rem, 8vw, 4rem)',
+          fontWeight: 700,
+          lineHeight: 1.1,
+          letterSpacing: '-0.02em',
+          marginBottom: '1rem',
+          background: 'linear-gradient(to right, var(--text-main), var(--accent))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent'
+        }}>
           The <span style={{ color: 'var(--accent)' }}>Gallery</span>
         </h1>
         <p className="text-muted" style={{ maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem' }}>

@@ -30,7 +30,18 @@ export default async function BookingsPage() {
   return (
     <div className="animate-fade-in">
       <header style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: 600 }}>All Bookings</h1>
+        <h1 style={{
+          fontSize: 'clamp(2.5rem, 6vw, 3.5rem)',
+          fontWeight: 700,
+          lineHeight: 1.1,
+          letterSpacing: '-0.02em',
+          marginBottom: '0.5rem',
+          background: 'linear-gradient(to right, var(--text-main), var(--accent))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent'
+        }}>
+          All <span style={{ color: 'var(--accent)' }}>Bookings</span>
+        </h1>
         <p className="text-muted">Manage and track all client booking requests.</p>
       </header>
 

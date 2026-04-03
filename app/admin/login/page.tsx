@@ -32,7 +32,18 @@ export default function AdminLogin() {
   return (
     <div style={{ display: 'flex', minHeight: '80vh', alignItems: 'center', justifyContent: 'center' }}>
       <div className="glass-panel animate-fade-in" style={{ padding: '3rem', width: '100%', maxWidth: '400px', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Admin Access</h1>
+        <h1 style={{
+          fontSize: 'clamp(2rem, 5vw, 2.5rem)', // Slightly smaller for login box
+          fontWeight: 700,
+          lineHeight: 1.1,
+          letterSpacing: '-0.02em',
+          marginBottom: '0.5rem',
+          background: 'linear-gradient(to right, var(--text-main), var(--accent))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent'
+        }}>
+          Admin <span style={{ color: 'var(--accent)' }}>Access</span>
+        </h1>
         <p className="text-muted" style={{ marginBottom: '2rem' }}>Authenticate to manage Zlata JPEG.</p>
 
         <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'left' }}>
