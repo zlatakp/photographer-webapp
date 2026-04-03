@@ -249,7 +249,7 @@ button {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
 
   to {
@@ -258,20 +258,103 @@ button {
   }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.8s ease forwards;
+@keyframes revealClip {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
+@keyframes subtleZoom {
+  from {
+    transform: scale(1.1);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes glint {
+  0% {
+    left: -150%;
+  }
+
+  100% {
+    left: 150%;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+.reveal-mask {
+  animation: revealClip 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.animate-subtle-zoom {
+  animation: subtleZoom 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.glint-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.glint-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  animation: glint 4s infinite cubic-bezier(0.65, 0, 0.35, 1);
+  pointer-events: none;
+}
+
+.depth-layer-1 { transform: translateZ(20px); }
+.depth-layer-2 { transform: translateZ(50px); }
+.depth-layer-3 { transform: translateZ(80px); }
+
 .stagger-1 {
-  animation-delay: 0.1s;
+  animation-delay: 0.2s;
 }
 
 .stagger-2 {
-  animation-delay: 0.3s;
+  animation-delay: 0.4s;
 }
 
 .stagger-3 {
-  animation-delay: 0.5s;
+  animation-delay: 0.6s;
 }
 
 @keyframes slideInRight {
@@ -362,4 +445,14 @@ button {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+/* Hover Boost for Interactive Items */
+.hover-boost {
+  transition: opacity 0.4s ease, border-color 0.4s ease, transform 0.4s ease !important;
+}
+
+.hover-boost:hover {
+  opacity: 1 !important;
+  border-color: rgba(194, 153, 113, 0.4) !important;
+  transform: scale(1.08) !important; /* Scale up slightly from its 0.85 base */
 }

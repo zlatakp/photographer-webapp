@@ -38,7 +38,7 @@ export default function Booking() {
   const nextStep = () => {
     if (step === 1 && (!formData.name || !formData.email)) return;
     setDirection('forward');
-    setStep(s => (s < 5 ? s + 1 : s));
+    setStep(s => (s < 6 ? s + 1 : s));
   };
 
   const prevStep = () => {
@@ -212,47 +212,47 @@ export default function Booking() {
                 {step === 5 && (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                     <h2 style={{ fontSize: '1.8rem', fontWeight: 500 }}>Review & Confirm</h2>
-                    
+
                     <div className="glass-panel" style={{ padding: '1.5rem', backgroundColor: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-color)' }}>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                            <User size={18} color="var(--accent)" />
-                            <div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Client</div>
-                                <div style={{ fontSize: '1rem' }}>{formData.name} ({formData.email})</div>
-                            </div>
+                          <User size={18} color="var(--accent)" />
+                          <div>
+                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Client</div>
+                            <div style={{ fontSize: '1rem' }}>{formData.name} ({formData.email})</div>
+                          </div>
                         </div>
 
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                            <Camera size={18} color="var(--accent)" />
-                            <div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Package</div>
-                                <div style={{ fontSize: '1rem' }}>{selectedPkg?.name || 'TBD'} • {formData.type}</div>
-                            </div>
+                          <Camera size={18} color="var(--accent)" />
+                          <div>
+                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Package</div>
+                            <div style={{ fontSize: '1rem' }}>{selectedPkg?.name || 'TBD'} • {formData.type}</div>
+                          </div>
                         </div>
 
                         {selectedAddons.length > 0 && (
-                            <div style={{ display: 'flex', gap: '1rem' }}>
-                                <Sparkles size={18} color="var(--accent)" style={{ flexShrink: 0, marginTop: '1.25rem' }} />
-                                <div>
-                                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Add-ons</div>
-                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.25rem' }}>
-                                        {selectedAddons.map(a => (
-                                            <span key={a.id} style={{ fontSize: '0.85rem', backgroundColor: 'rgba(255,255,255,0.05)', padding: '2px 8px', borderRadius: '4px' }}>{a.name}</span>
-                                        ))}
-                                    </div>
-                                </div>
+                          <div style={{ display: 'flex', gap: '1rem' }}>
+                            <Sparkles size={18} color="var(--accent)" style={{ flexShrink: 0, marginTop: '1.25rem' }} />
+                            <div>
+                              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Add-ons</div>
+                              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.25rem' }}>
+                                {selectedAddons.map(a => (
+                                  <span key={a.id} style={{ fontSize: '0.85rem', backgroundColor: 'rgba(255,255,255,0.05)', padding: '2px 8px', borderRadius: '4px' }}>{a.name}</span>
+                                ))}
+                              </div>
                             </div>
+                          </div>
                         )}
 
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                            <FileText size={18} color="var(--accent)" />
-                            <div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Message</div>
-                                <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
-                                    {formData.message ? `"${formData.message.substring(0, 80)}${formData.message.length > 80 ? '...' : ''}"` : 'No additional message.'}
-                                </div>
+                          <FileText size={18} color="var(--accent)" />
+                          <div>
+                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Message</div>
+                            <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
+                              {formData.message ? `"${formData.message.substring(0, 80)}${formData.message.length > 80 ? '...' : ''}"` : 'No additional message.'}
                             </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -270,9 +270,9 @@ export default function Booking() {
                   <div></div>
                 )}
 
-                {step < 5 ? (
+                {step < 6 ? (
                   <button type="button" onClick={nextStep} disabled={step === 1 && (!formData.name || !formData.email)} className={step === 1 && (!formData.name || !formData.email) ? 'btn-secondary' : 'btn-primary'} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', width: '120px', justifyContent: 'center', opacity: step === 1 && (!formData.name || !formData.email) ? 0.5 : 1 }}>
-                    Next <ChevronRight size={18} />
+                    {step < 5 ? 'Next' : 'Book'} <ChevronRight size={18} />
                   </button>
                 ) : (
                   <button type="submit" disabled={status === 'submitting'} className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: '150px', justifyContent: 'center' }}>

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Hero from '@/components/Hero';
 
 export const metadata: Metadata = {
   title: 'ZLATA JPEG | Body Aesthetics Photography',
@@ -9,56 +9,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      {/* Hero Section */}
-      <section style={{
-        position: 'relative',
-        height: '90vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden'
-      }}>
-        {/* Abstract luxury background */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'radial-gradient(circle at 50% 50%, rgba(194, 153, 113, 0.08) 0%, var(--bg-color) 80%)',
-          zIndex: -1
-        }} />
-
-        <div className="container" style={{ textAlign: 'center', zIndex: 10 }}>
-          <div className="animate-fade-in">
-            <h1 style={{
-              fontSize: 'clamp(3rem, 8vw, 6rem)',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              marginBottom: '1.5rem',
-              background: 'linear-gradient(to right, var(--text-main), var(--accent))',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}>
-              Timeless <br /> Elegance
-            </h1>
-          </div>
-          <p className="text-muted animate-fade-in stagger-1" style={{
-            fontSize: '1.25rem',
-            maxWidth: '600px',
-            margin: '0 auto 3rem auto',
-            fontWeight: 300
-          }}>
-            Guidance from enquiry to delivery by a female photographer. You don't need to know posing, you don't need to know your angles. All you need to do is show up.
-          </p>
-          <div className="flex justify-center gap-4 animate-fade-in stagger-2">
-            <Link href="/portfolio" className="btn-primary">
-              Discover Portfolio
-            </Link>
-            <Link href="/booking" className="btn-secondary">
-              Book a Session
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Philosophy Section */}
       <section className="container" style={{ padding: '6rem 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

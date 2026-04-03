@@ -21,9 +21,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={outfit.className}>
         <ThemeProvider>
-          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
             <Navbar />
-            <main style={{ flex: 1 }}>{children}</main>
+            <main style={{ flex: 1, position: 'relative', zIndex: 1 }}>{children}</main>
             <Footer />
           </div>
         </ThemeProvider>
